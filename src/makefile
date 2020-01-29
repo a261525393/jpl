@@ -1,5 +1,6 @@
 all:clean
-	gcc -g jpl.c -lmysqlclient -o jpl
+	mysqldump -uroot -padmin jpl --events --routines --triggers > build/jpl.sql
+	gcc -g jpl.c -lmysqlclient -o build/jpl
 
 clean:
-	rm -f jpl
+	rm -f build/jpl build/*.e build/jpl.sql
